@@ -48,18 +48,57 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   _image == null ? Container() : Image.file(_image),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
-                  _outputs != null
-                      ? Text(
-                          "${_outputs[0]["label"]}",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20.0,
-                            background: Paint()..color = Colors.white,
-                          ),
+                  _outputs[0]["label"].toString().substring(
+                              2, _outputs[0]["label"].toString().length) !=
+                          'Yes'
+                      ? Column(
+                          children: [
+                            Text(
+                              "No, the given image doesn't show signs of Diabetic Retinopathy",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                background: Paint()..color = Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                background: Paint()..color = Colors.white,
+                              ),
+                            ),
+                          ],
                         )
-                      : Container()
+                      : Column(
+                          children: [
+                            Text(
+                              "Yes, the given image shows signs of Diabetic Retinopathy",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                background: Paint()..color = Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0,
+                                background: Paint()..color = Colors.white,
+                              ),
+                            ),
+                          ],
+                        )
                 ],
               ),
             ),
