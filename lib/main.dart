@@ -46,59 +46,72 @@ class _MyAppState extends State<MyApp> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _image == null ? Container() : Image.file(_image),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  _outputs[0]["label"].toString().substring(
-                              2, _outputs[0]["label"].toString().length) !=
-                          'Yes'
-                      ? Column(
-                          children: [
-                            Text(
-                              "No, the given image doesn't show signs of Diabetic Retinopathy",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20.0,
-                                background: Paint()..color = Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20.0,
-                                background: Paint()..color = Colors.white,
-                              ),
-                            ),
-                          ],
+                  _image == null
+                      ? Container(
+                          child: Text("No Image found"),
                         )
                       : Column(
                           children: [
-                            Text(
-                              "Yes, the given image shows signs of Diabetic Retinopathy",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20.0,
-                                background: Paint()..color = Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20.0,
-                                background: Paint()..color = Colors.white,
-                              ),
-                            ),
+                            Image.file(_image),
+                            SizedBox(height: 30),
+                            _outputs[0]["label"].toString().substring(
+                                        2,
+                                        _outputs[0]["label"]
+                                            .toString()
+                                            .length) !=
+                                    'Yes'
+                                ? Column(
+                                    children: [
+                                      Text(
+                                        "No, the given image doesn't show signs of Diabetic Retinopathy",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20.0,
+                                          background: Paint()
+                                            ..color = Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Text(
+                                        "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20.0,
+                                          background: Paint()
+                                            ..color = Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      Text(
+                                        "Yes, the given image shows signs of Diabetic Retinopathy",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20.0,
+                                          background: Paint()
+                                            ..color = Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Text(
+                                        "Confidence : ${_outputs[0]["confidence"].toStringAsFixed(4)}",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20.0,
+                                          background: Paint()
+                                            ..color = Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  )
                           ],
-                        )
+                        ),
                 ],
               ),
             ),
